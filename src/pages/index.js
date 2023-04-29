@@ -1,5 +1,6 @@
-import Head from "next/head";
 import { Flex, Text } from "@chakra-ui/react";
+
+import Head from "next/head";
 import StyledCard from "@/components/StyledCard";
 
 export default function Home() {
@@ -16,10 +17,7 @@ export default function Home() {
       </Head>
       <main>
         <Flex h="100vh" w="100vw" align="center" justify="center">
-          <StyledCard>
-            
-            <Text fontSize="4xl">Delete this</Text>
-          </StyledCard>
+          <StyledCard></StyledCard>
         </Flex>
       </main>
     </>
