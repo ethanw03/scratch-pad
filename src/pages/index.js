@@ -17,6 +17,7 @@ export default function Home() {
       <main>
         <Flex h="100vh" w="100vw" align="center" justify="center">
           <StyledCard>
+            
             <Text fontSize="4xl">Delete this</Text>
           </StyledCard>
         </Flex>
