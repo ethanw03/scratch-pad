@@ -25,7 +25,21 @@ const StyledCard = ({}) => {
   return (
     <Card w="768px" h="514px" padding="6">
       <Flex direction="column" justifyContent="center">
-        <Box>
+        <Box
+          width="722px"
+          height="18vh"
+          overflowY="scroll"
+          sx={{
+            "&::-webkit-scrollbar": {
+              width: "16px",
+              borderRadius: "8px",
+              backgroundColor: `rgba(0, 0, 0, 0.05)`,
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: `rgba(0, 0, 0, 0.05)`,
+            },
+          }}
+        >
           {notes.map((note, index) => (
             <StyledCardItem key={`styledCardItem__${index}`} message={note} />
           ))}
