@@ -47,7 +47,7 @@ const StyledCard = ({}) => {
               backgroundColor: `transparent`,
             },
             "&::-webkit-scrollbar-thumb": {
-              backgroundColor: `rgba(0, 0, 0, 0.4)`,
+              backgroundColor: `blue.500`,
             },
           }}
         >

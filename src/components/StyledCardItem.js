@@ -1,18 +1,18 @@
-import { Box, Card, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 
 const StyledCardItem = ({ message }) => {
   return (
-    <Flex>
-      <Text
-        border="1px"
-        borderColor="gray.200"
+    <Flex my={2}>
+      <Box
+        bg="blue.500"
+        color="white"
         borderRadius="8px"
-        mb="20px"
-        width="738px"
-        height="75px"
+        py={2}
+        px={4}
+        maxWidth="80%"
       >
-        <Box margin="6px">{message}</Box>
-      </Text>
+        <Text>{message}</Text>
+      </Box>
     </Flex>
   );
 };
