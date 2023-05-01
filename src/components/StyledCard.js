@@ -1,7 +1,7 @@
 import { Box, Card, Flex, Input, Spacer, Text } from "@chakra-ui/react";
+import { useEffect, useRef, useState } from "react";
 
 import StyledCardItem from "./StyledCardItem";
-import { useState } from "react";
 
 const StyledCard = ({}) => {
   const [notes, setNotes] = useState([]);
@@ -12,7 +12,7 @@ const StyledCard = ({}) => {
   };
 
   const handleAddNote = () => {
-    setNotes([note, ...notes]);
+    setNotes([...notes, note]);
     setNote("");
   };
 
@@ -22,30 +22,40 @@ const StyledCard = ({}) => {
     }
   };
 
+  const notesContainerRef = useRef();
+
+  useEffect(() => {
+    if (notesContainerRef.current) {
+      notesContainerRef.current.scrollTop =
+        notesContainerRef.current.scrollHeight;
+    }
+  }, [notes]);
+
   return (
     <Card w="768px" h="514px" padding="6">
-      <Flex direction="column" justifyContent="center">
+      <Flex direction="column-reverse" justifyContent="flex-end">
         <Box
+          ref={notesContainerRef}
           width="722px"
           height="18vh"
           overflowY="scroll"
           sx={{
             "&::-webkit-scrollbar": {
-              width: "16px",
+              width: "4px",
               borderRadius: "8px",
               backgroundColor: `rgba(0, 0, 0, 0.05)`,
             },
             "&::-webkit-scrollbar-thumb": {
-              backgroundColor: `rgba(0, 0, 0, 0.05)`,
+              backgroundColor: `rgba(0, 0, 0, 0.4)`,
             },
           }}
         >
+          <Spacer />
           {notes.map((note, index) => (
             <StyledCardItem key={`styledCardItem__${index}`} message={note} />
           ))}
         </Box>
 
-        <Spacer />
         <Box position="absolute" bottom="0" marginBottom="20px">
           <Input
             type="text"
