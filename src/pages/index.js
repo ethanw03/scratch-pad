@@ -13,7 +13,7 @@ export default function Home() {
           content="Another day, another note you forgot to write down"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/note.ico" />
       </Head>
       <main>
         <Flex h="100vh" w="100vw" align="center" justify="center">
