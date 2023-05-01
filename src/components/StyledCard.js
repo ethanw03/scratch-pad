@@ -1,4 +1,12 @@
-import { Box, Card, Flex, Input, Spacer, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Card,
+  Flex,
+  Input,
+  Spacer,
+  Text,
+  Textarea,
+} from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 
 import StyledCardItem from "./StyledCardItem";
@@ -6,9 +14,12 @@ import StyledCardItem from "./StyledCardItem";
 const StyledCard = ({}) => {
   const [notes, setNotes] = useState([]);
   const [note, setNote] = useState("");
+  const [maxCharLimit] = useState(200);
 
   const handleChange = (event) => {
-    setNote(event.target.value);
+    if (event.target.value.length <= maxCharLimit) {
+      setNote(event.target.value);
+    }
   };
 
   const handleAddNote = () => {
@@ -59,9 +70,8 @@ const StyledCard = ({}) => {
           </Flex>
         </Box>
 
-        <Box marginTop="20px">
-          <Input
-            type="text"
+        <Box marginTop="20px" position="relative">
+          <Textarea
             id="note"
             name="note"
             value={note}
@@ -72,6 +82,11 @@ const StyledCard = ({}) => {
             height="80px"
             placeholder="Start typing here"
           />
+          <Box position="absolute" bottom="2" right="2">
+            <Text fontSize="xs">
+              {maxCharLimit}-{note.length}
+            </Text>
+          </Box>
         </Box>
       </Flex>
     </Card>
