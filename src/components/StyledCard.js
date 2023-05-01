@@ -33,30 +33,33 @@ const StyledCard = ({}) => {
 
   return (
     <Card w="768px" h="514px" padding="6">
-      <Flex direction="column-reverse" justifyContent="flex-end">
+      <Flex direction="column" justifyContent="space-between">
         <Box
           ref={notesContainerRef}
           width="722px"
-          height="18vh"
+          height="360px"
           overflowY="scroll"
+          overflowX="hidden"
           sx={{
             "&::-webkit-scrollbar": {
               width: "4px",
               borderRadius: "8px",
-              backgroundColor: `rgba(0, 0, 0, 0.05)`,
+              backgroundColor: `transparent`,
             },
             "&::-webkit-scrollbar-thumb": {
               backgroundColor: `rgba(0, 0, 0, 0.4)`,
             },
           }}
         >
-          <Spacer />
-          {notes.map((note, index) => (
-            <StyledCardItem key={`styledCardItem__${index}`} message={note} />
-          ))}
+          <Flex direction="column" minHeight="100%" justifyContent="flex-end">
+            <Spacer />
+            {notes.map((note, index) => (
+              <StyledCardItem key={`styledCardItem__${index}`} message={note} />
+            ))}
+          </Flex>
         </Box>
 
-        <Box position="absolute" bottom="0" marginBottom="20px">
+        <Box marginTop="20px">
           <Input
             type="text"
             id="note"
