@@ -53,12 +53,12 @@ const StyledCard = ({}) => {
   }, [notes]);
 
   return (
-    <Card w="768px" h="514px" padding="6">
+    <Card minW="36%" minH="36%" padding="6">
       <Flex direction="column" justifyContent="space-between">
         <Box
           ref={notesContainerRef}
-          width="722px"
-          height="360px"
+          width="100%"
+          height={{ base: "60%", md: "360px" }}
           overflowY="scroll"
           overflowX="hidden"
           sx={{
@@ -91,9 +91,10 @@ const StyledCard = ({}) => {
             onChange={handleChange}
             onKeyDown={handleKeyDown}
             textAlign="left"
-            width="722px"
-            height="80px"
+            width="100%"
+            height={{ base: "20%", md: "80px" }}
             placeholder="Start typing here"
+            bottom="2"
             sx={{
               "&::-webkit-scrollbar": {
                 width: "4px",
@@ -105,7 +106,7 @@ const StyledCard = ({}) => {
               },
             }}
           />
-          <Box position="absolute" bottom="2" right="2">
+          <Box position="absolute" bottom="3" right="3">
             <Text
               fontSize="xs"
               color={maxCharLimit - note.length === 0 ? "red.500" : "inherit"}
