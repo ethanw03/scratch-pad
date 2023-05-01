@@ -41,7 +41,7 @@ export default function Home() {
           direction="column"
           align="center"
           justify="center"
-          backgroundColor="gray.100"
+          backgroundColor="gray.300"
         >
           <Flex mb="4">
             <Button size="sm" onClick={handlePreviousDay}>

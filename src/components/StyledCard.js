@@ -72,8 +72,7 @@ const StyledCard = ({}) => {
             },
           }}
         >
-          <Flex direction="column" minHeight="100%" justifyContent="flex-end">
-            <Spacer />
+          <Flex direction="column" minHeight="100%">
             {notes.map((note, index) => (
               <StyledCardItem
                 key={`styledCardItem__${index}`}

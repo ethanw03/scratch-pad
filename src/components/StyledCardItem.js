@@ -4,13 +4,15 @@ const StyledCardItem = ({ message, timestamp }) => {
   return (
     <Flex justifyContent="space-between" alignItems="center" mb="20px">
       <Text
-        backgroundColor="blue.500"
+        backgroundColor="transparent"
         border="1px"
         borderColor="gray.200"
         borderRadius="8px"
-        color="white"
+        color="black"
         padding="6px"
         wordBreak="break-word"
+        minWidth="90%"
+        minHeight="5vh"
       >
         {message}
       </Text>
