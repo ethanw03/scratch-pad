@@ -1,18 +1,22 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 
-const StyledCardItem = ({ message }) => {
+const StyledCardItem = ({ message, timestamp }) => {
   return (
-    <Flex my={2}>
-      <Box
-        bg="blue.500"
-        color="white"
+    <Flex justifyContent="space-between" alignItems="center" mb="20px">
+      <Text
+        backgroundColor="blue.500"
+        border="1px"
+        borderColor="gray.200"
         borderRadius="8px"
-        py={2}
-        px={4}
-        maxWidth="80%"
+        color="white"
+        padding="6px"
+        wordBreak="break-word"
       >
-        <Text>{message}</Text>
-      </Box>
+        {message}
+      </Text>
+      <Text color="gray.500" fontSize="xs" ml="10px">
+        {timestamp}
+      </Text>
     </Flex>
   );
 };

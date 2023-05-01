@@ -15,6 +15,7 @@ const StyledCard = ({}) => {
   const [notes, setNotes] = useState([]);
   const [note, setNote] = useState("");
   const [maxCharLimit] = useState(200);
+  const [timestamps, setTimestamps] = useState([]);
 
   const handleChange = (event) => {
     if (event.target.value.length <= maxCharLimit) {
@@ -23,7 +24,16 @@ const StyledCard = ({}) => {
   };
 
   const handleAddNote = () => {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const ampm = hours >= 12 ? "PM" : "AM";
+    const formattedHours = hours % 12 || 12;
+    const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+    const timestamp = `${formattedHours}:${formattedMinutes}${ampm}`;
+
     setNotes([...notes, note]);
+    setTimestamps([...timestamps, timestamp]);
     setNote("");
   };
 
@@ -58,14 +68,18 @@ const StyledCard = ({}) => {
               backgroundColor: `transparent`,
             },
             "&::-webkit-scrollbar-thumb": {
-              backgroundColor: `blue.500`,
+              backgroundColor: `transparent`,
             },
           }}
         >
           <Flex direction="column" minHeight="100%" justifyContent="flex-end">
             <Spacer />
             {notes.map((note, index) => (
-              <StyledCardItem key={`styledCardItem__${index}`} message={note} />
+              <StyledCardItem
+                key={`styledCardItem__${index}`}
+                message={note}
+                timestamp={timestamps[index]}
+              />
             ))}
           </Flex>
         </Box>
@@ -81,10 +95,23 @@ const StyledCard = ({}) => {
             width="722px"
             height="80px"
             placeholder="Start typing here"
+            sx={{
+              "&::-webkit-scrollbar": {
+                width: "4px",
+                borderRadius: "8px",
+                backgroundColor: `transparent`,
+              },
+              "&::-webkit-scrollbar-thumb": {
+                backgroundColor: `transparent`,
+              },
+            }}
           />
           <Box position="absolute" bottom="2" right="2">
-            <Text fontSize="xs">
-              {maxCharLimit}-{note.length}
+            <Text
+              fontSize="xs"
+              color={maxCharLimit - note.length === 0 ? "red.500" : "inherit"}
+            >
+              {maxCharLimit - note.length}
             </Text>
           </Box>
         </Box>
